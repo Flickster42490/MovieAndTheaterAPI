@@ -19,9 +19,7 @@ exports.create = function(req,res) {
 //GET all movies with pagination
 exports.listAll = function(req,res) {
    var Page = req.params.page_number * 2;
-    if(isNaN(Page)){
-      res.send('provide a number for the param or the string "all"');
-    }else if(req.params.page_number === 'all'){
+    if(req.params.page_number === 'all'){
       Movie.find(function(err, movies) {
         if(err){
           res.send(err);
@@ -29,6 +27,8 @@ exports.listAll = function(req,res) {
           res.send(movies);
         }
       });
+    }else if(isNaN(Page)){
+      res.send('provide a number for the param or the string "all"');
     }else{
       Movie.find({}).skip(req.params.page_number*2).limit(2)
           .exec(function(err,list){

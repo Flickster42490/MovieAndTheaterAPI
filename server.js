@@ -37,7 +37,6 @@ router.route('/movies/:movie_title')
   .put(MovieApi.updateOne)
   .delete(MovieApi.deleteOne);
 
-
 //Custom Endpoint to GET nearby theaters 
 router.route('/nearby/:city/:address')
   .get(TheaterApi.nearbyList);
@@ -45,7 +44,6 @@ router.route('/nearby/:city/:address')
 // Endpoint to CREATE new Theater
 router.route('/theater')
   .post(TheaterApi.create);
-
 
 //Endpoint to GET a list of all Theaters-no pagination
 router.route('/theater/list/:page_number')
